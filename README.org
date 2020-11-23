@@ -1,0 +1,24 @@
+* Overview
+
+An extra codec for netty to support penn testing.
+
+* Background
+
+Although Netty is wonderful library and easy to use, by default it puts limitation on itself to follow RFC guidelines.
+This is favorable for most users but lack the freedom needed to conduct penn testing.
+Therefore I decided to create an extra codec to address this issue. Since netty is build with modularity in mind, this is quite easy to accomplish.
+
+* Features
+** Disable transfer encoding detection. 
+On HTTP smuggling, we need to send payload as is. This is accomplished by disabling transfer encoding detection on HttpRequest.
+* Usage 
+
+- Add the following to your pom.xml
+
+<dependency>
+  <groupId>io.netty</groupId>
+  <artifactId>netty-extra-codec</artifactId>
+  <version>1.0-SNAPSHOT</version>
+</dependency>
+
+- On your initializer, replace HttpClientCodec with ModHttpClientCodec
